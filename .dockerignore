@@ -1,0 +1,14 @@
+# Git and Docker files
+.git
+.gitignore
+Dockerfile
+.dockerignore
+
+# Python (與 .gitignore 重疊)
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Secrets (與 .gitignore 重疊)
+app/.env

@@ -1,0 +1,28 @@
+mcp_version: 1.0
+
+title: 天氣查詢工具 (Weather Query Tool)
+description: 一個用於查詢臺灣各縣市天氣預報的工具。
+icon: "thermostat" 
+
+# --- 新增 secrets 區塊 ---
+# 宣告這個工具需要哪些秘密憑證 (會被當作環境變數傳入)
+secrets:
+  # 金鑰的名稱，會對應到環境變數的名稱
+  CWA_AUTH_TOKEN:
+    # 在 Docker Desktop UI 中會顯示的描述，引導使用者輸入正確的資訊
+    description: "請輸入您的中央氣象署開放資料平台授權碼 (CWA Authorization Token)。"
+    # 這個金鑰是必須的
+    required: true
+
+# operations 區塊與之前完全相同
+operations:
+  - operationId: get_weather
+    description: 根據指定的台灣城市名稱，取得即時的天氣預報。
+    parameters:
+      type: object
+      properties:
+        city:
+          type: string
+          description: "要查詢天氣的台灣城市或縣市名稱，例如 '臺北市', '台中市', '花蓮縣'。"
+      required:
+        - city
